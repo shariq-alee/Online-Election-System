@@ -1,0 +1,282 @@
+﻿@using System.Collections.Generic
+@using System.Web.Optimization
+
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Poiret+One" rel="stylesheet">
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">*
+    @Styles.Render("~/Content/vendor/font-awesome/css/font-awesome.min.css")
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    @Styles.Render("~/Content/vendor/datatables/dataTables.bootstrap4.css")
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin.css" rel="stylesheet">
+    @Styles.Render("~/Content/css/sb-admin.css")
+    @Styles.Render("~/Content/wid.css")
+    @Scripts.Render("~/Content/wid.js")
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/popper/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="~/Content/js/sb-admin-datatables.min.js"></script>
+    <script src="~/Content/js/sb-admin-charts.min.js"></script>
+    <script src="~/Scripts/Chart.js-master/src/charts.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getConstituencies();
+        });
+
+        function getConstituencies() {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/getConstituencies',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: '{}',
+                success: function (msg) {
+                    debugger
+                    var table = '<div class="row">';
+                    for(var i=0; i<msg.length;i++){
+                        table += '<div class="card" style="width: 18rem;margin:10px"><div class="card-body"><h1 class="card-title">' + msg[i].ConstitutionCode + '</h1><p class="card-text"><b><u>City:</u> ' + msg[i].ConstitutionCity + '<br><u>Total Candidates:</u> ' + msg[i].TotalCandidates + '<br><u>Total Voters:</u> ' + msg[i].TotalNumberOfVoters + '<br><u>Total Votes Casted:</u> ' + msg[i].TotalVotesCasted + '</b></p>';
+                        for(var j=0;j<msg[i].Candidates.length;j++){
+                            table += '<p>' + msg[i].Candidates[j].Name + ' (' + msg[i].Candidates[j].PoliticalParty + '): ' + msg[i].Candidates[j].numberOfVotes + ' Votes</p>';
+                        }
+                        table += '</div></div>';
+                    }
+
+                    $('#ConstituencyCards').html(table);
+                },
+                error: function (msg) {
+
+                }
+            });
+        }
+
+        @*function getCandidates() {
+            debugger
+            var constituency = $('#constituencyId option:selected').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/Home/getCandidates',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                data: '{"constituencyId":"' + constituency + '"}',
+                success: function (msg) {
+                    //                    var table = "<tr><th>Party<th>Candidate Name</th><th>City</th><th>Constitute</th><th>City</th><th>Action</th></tr>";
+                    // table = '<thead style="font-weight:bold"><tr><td>Id</td><td>Floor Category</td><td>Hotel Name</td><td>Hotel City</td>';
+                    //table += '<td>Fathername</td><td>Cnic</td><td>Gender</td><td>Email</td><td>Contact</td><td>DateOfBirth</td>';
+                    //  table += '<td>Action</td></tr></thead></tbody>';
+                    var table = '<div class="row" >';
+                    for (var i = 0; i < msg.length; i++) {
+                        debugger
+                        table += '<div class="card" style="width: 18rem;margin:10px"><img class="card-img-top" src="/Content/pictures/' + msg[i].PoliticalParty + '.png" alt="Card image cap"><div class="card-body"><h5 class="card-title">' + msg[i].Name + '</h5><p class="card-text"><b><u>Political Party:</u> ' + msg[i].PoliticalParty + '<br><u>Constituency:</u> ' + msg[i].Constitution.ConstitutionCode + '<br><u>City:</u> ' + msg[i].Constitution.ConstitutionCity + '</b></p>';
+                        @if (ViewBag.Voted == "Not Voted")
+                        {
+                         <text>
+                        table += '<a href="/Home/CastVoteToCandidate?ConstituteId=' + msg[i].Constitution.Id + '&CandidateId=' + msg[i].Id + '" class="btn btn-primary">Vote</a>';
+                        </text>
+                        }
+
+                        table += '</div></div>';
+                        //table += '<tr><td><img src="/Content/pictures/'+msg[i].PoliticalParty+'.png" width="70px" height="40px"></td><td>' + msg[i].Name+ '</td><td>' + msg[i].PermanentAddress+ '</td><td>' + msg[i].constituency+ '</td><td>' + msg[i].Age + '</td><td><input type="button" value="Vote"  class="btn"></td>';
+                    } debugger
+                    //                    table += '</tbody>';
+                    table += '</div>';
+                    $('#CandidateCards').html(table);
+                },
+                error: function () {
+                    console.log("Error occured in system");
+                }
+            });
+        }*@
+    </script>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        @*<img src="~/Content/logo.jpg" height="50px" width="28px" style="border-radius:3px" />*@&nbsp;&nbsp;&nbsp;<a class="navbar-brand" href="@Url.Action("Dashboard","Home")">Online Election System</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="@Url.Action("Dashboard","Home")">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="CreateNewForm">
+                    <a class="nav-link" href="@Url.Action("CastVote","Home")">
+                        <i class="fa fa-fw fa-book"></i>
+                        <span class="nav-link-text">Cast Vote</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="CreateNewForm">
+                    <a class="nav-link" href="@Url.Action("ResultReports","Home")">
+                        <i class="fa fa-fw fa-book"></i>
+                        <span class="nav-link-text">Result and Reports</span>
+                    </a>
+                </li>
+                @if (ViewBag.UserRole == "Voter")
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+                        <a class="nav-link" href="@Url.Action("BecomeACandidate","Home")">
+                            <i class="fa fa-fw fa-gear"></i>
+                            <span class="nav-link-text">Become a Candidate</span>
+                        </a>
+                    </li>
+                }
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+                    <a class="nav-link" href="@Url.Action("Settings","Home")">
+                        <i class="fa fa-fw fa-gear"></i>
+                        <span class="nav-link-text">Settings</span>
+                    </a>
+                </li>
+                @if (ViewBag.UserRole == "Admin")
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-table"></i>
+                            <span class="nav-link-text">Administration Panel</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="@Url.Action("ManageUserProfiles","Admin")">Manage User Profiles</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ManagePoliticalParties","Admin")">Manage Political Parties</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ManageCandidates","Admin")">Manage Candidates</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("VerifyCandidate","Admin")">Verfiy Candidate</a>
+                            </li>
+                            
+                            <li>
+                                <a href="@Url.Action("AnalyseSentiments","Admin")">Sentiments Analysis</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav sidenav-toggler"></ul>
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li>
+
+                    <p style="color:white;padding-top:7px">@ViewBag.Username, @ViewBag.UserRole </p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="Content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+            <h3>Result and Reports</h3>
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <hr class="mt-2">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+            <!-- Example DataTables Card-->
+            <div class="card mb-3">
+
+
+                <div id="ConstituencyCards" style="padding:40px"><center><p style="color:red"><b>Please Wait!</b></p></center></div>
+                
+                <div class="card-footer small text-muted"></div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.~/Content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Election Commission of Pakistan 2017</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-Content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="@Url.Action("Logout","Authorization")">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap core JavaScript-->
+
+    </div>
+
+
+</body>
+
+</html>

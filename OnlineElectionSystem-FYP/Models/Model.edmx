@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ElectionCommissionDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="CNIC" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="PermanentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="lastLogin" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CNIC" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="PermanentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="ConstituteId" Type="int" />
+          <Property Name="PoliticalParty" Type="varchar" MaxLength="50" />
+          <Property Name="Symbol" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Candidate_Requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CitizenId" Type="int" />
+          <Property Name="ConstitutionId" Type="int" />
+          <Property Name="RequestNote" Type="varchar" MaxLength="200" />
+          <Property Name="Decision" Type="varchar" MaxLength="50" />
+          <Property Name="PoliticalParty" Type="varchar" MaxLength="50" />
+          <Property Name="Documents" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Citizens">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="CNIC" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="varchar" MaxLength="50" />
+          <Property Name="CurrentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="CurrentAreaAddress" Type="varchar" MaxLength="200" />
+          <Property Name="PermanentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="PermanentAreaAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+          <Property Name="lastLogin" Type="varchar" MaxLength="50" />
+          <Property Name="occupation" Type="varchar" MaxLength="20" />
+          <Property Name="ConstituencyId" Type="int" />
+        </EntityType>
+        <EntityType Name="Constituency_Locations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="ConstituencyId" Type="int" />
+        </EntityType>
+        <EntityType Name="Constitution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConstitutionCode" Type="varchar" MaxLength="50" />
+          <Property Name="ConstitutionCity" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Election_Votes_Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConstitutionId" Type="int" />
+          <Property Name="CandidateId" Type="int" />
+          <Property Name="VoterId" Type="int" />
+        </EntityType>
+        <EntityType Name="PoliticalParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Voters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="CNIC" Type="varchar" MaxLength="50" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CurrentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="PermanentAddress" Type="varchar" MaxLength="200" />
+          <Property Name="Constitute" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VoterSentiments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VoterId" Type="int" Nullable="false" />
+          <Property Name="Sentiment" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="CandidateId" Type="int" />
+        </EntityType>
+        <EntityContainer Name="ElectionCommissionDatabaseModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidate_Requests" EntityType="Self.Candidate_Requests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Citizens" EntityType="Self.Citizens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Constituency_Locations" EntityType="Self.Constituency_Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Constitution" EntityType="Self.Constitution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Election_Votes_Candidate" EntityType="Self.Election_Votes_Candidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoliticalParty" EntityType="Self.PoliticalParty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voters" EntityType="Self.Voters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoterSentiments" EntityType="Self.VoterSentiments" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ElectionCommissionDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ElectionCommissionDatabaseEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="Admins" EntityType="ElectionCommissionDatabaseModel.Admin" />
+          <EntitySet Name="Candidates" EntityType="ElectionCommissionDatabaseModel.Candidate" />
+          <EntitySet Name="Constitutions" EntityType="ElectionCommissionDatabaseModel.Constitution" />
+          <EntitySet Name="Election_Votes_Candidate" EntityType="ElectionCommissionDatabaseModel.Election_Votes_Candidate" />
+          <EntitySet Name="PoliticalParties" EntityType="ElectionCommissionDatabaseModel.PoliticalParty" />
+          <EntitySet Name="Voters" EntityType="ElectionCommissionDatabaseModel.Voter" />
+          <EntitySet Name="Constituency_Locations" EntityType="ElectionCommissionDatabaseModel.Constituency_Locations" />
+          <EntitySet Name="Citizens" EntityType="ElectionCommissionDatabaseModel.Citizen" />
+          <EntitySet Name="VoterSentiments" EntityType="ElectionCommissionDatabaseModel.VoterSentiment" />
+          <EntitySet Name="Candidate_Requests" EntityType="ElectionCommissionDatabaseModel.Candidate_Requests" />
+          </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="lastLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConstituteId" Type="Int32" />
+          <Property Name="PoliticalParty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Symbol" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Constitution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConstitutionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConstitutionCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Election_Votes_Candidate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConstitutionId" Type="Int32" />
+          <Property Name="CandidateId" Type="Int32" />
+          <Property Name="VoterId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PoliticalParty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Voter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Constitute" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Constituency_Locations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConstituencyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Citizen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CurrentAreaAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PermanentAreaAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="occupation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ConstituencyId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VoterSentiment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VoterId" Type="Int32" Nullable="false" />
+          <Property Name="Sentiment" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="CandidateId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Candidate_Requests">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CitizenId" Type="Int32" />
+          <Property Name="ConstitutionId" Type="Int32" />
+          <Property Name="RequestNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Decision" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PoliticalParty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Documents" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ElectionCommissionDatabaseModelStoreContainer" CdmEntityContainer="ElectionCommissionDatabaseEntities" >
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidates">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Candidate">
+              <MappingFragment StoreEntitySet="Candidate">
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+                <ScalarProperty Name="ConstituteId" ColumnName="ConstituteId" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Constitutions">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Constitution">
+              <MappingFragment StoreEntitySet="Constitution">
+                <ScalarProperty Name="ConstitutionCity" ColumnName="ConstitutionCity" />
+                <ScalarProperty Name="ConstitutionCode" ColumnName="ConstitutionCode" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Election_Votes_Candidate">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Election_Votes_Candidate">
+              <MappingFragment StoreEntitySet="Election_Votes_Candidate">
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="ConstitutionId" ColumnName="ConstitutionId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoliticalParties">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.PoliticalParty">
+              <MappingFragment StoreEntitySet="PoliticalParty">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voters">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Voter">
+              <MappingFragment StoreEntitySet="Voters">
+                <ScalarProperty Name="Constitute" ColumnName="Constitute" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Constituency_Locations">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Constituency_Locations">
+              <MappingFragment StoreEntitySet="Constituency_Locations">
+                <ScalarProperty Name="ConstituencyId" ColumnName="ConstituencyId" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Citizens">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Citizen">
+              <MappingFragment StoreEntitySet="Citizens">
+                <ScalarProperty Name="ConstituencyId" ColumnName="ConstituencyId" />
+                <ScalarProperty Name="occupation" ColumnName="occupation" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PermanentAreaAddress" ColumnName="PermanentAreaAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="CurrentAreaAddress" ColumnName="CurrentAreaAddress" />
+                <ScalarProperty Name="CurrentAddress" ColumnName="CurrentAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoterSentiments">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.VoterSentiment">
+              <MappingFragment StoreEntitySet="VoterSentiments">
+                <ScalarProperty Name="CandidateId" ColumnName="CandidateId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Sentiment" ColumnName="Sentiment" />
+                <ScalarProperty Name="VoterId" ColumnName="VoterId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidate_Requests">
+            <EntityTypeMapping TypeName="ElectionCommissionDatabaseModel.Candidate_Requests">
+              <MappingFragment StoreEntitySet="Candidate_Requests">
+                <ScalarProperty Name="Documents" ColumnName="Documents" />
+                <ScalarProperty Name="PoliticalParty" ColumnName="PoliticalParty" />
+                <ScalarProperty Name="Decision" ColumnName="Decision" />
+                <ScalarProperty Name="RequestNote" ColumnName="RequestNote" />
+                <ScalarProperty Name="ConstitutionId" ColumnName="ConstitutionId" />
+                <ScalarProperty Name="CitizenId" ColumnName="CitizenId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

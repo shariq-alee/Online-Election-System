@@ -1,0 +1,32 @@
+﻿html,body {
+}
+
+
+
+.tb10 {
+	background-image:url(images/form_bg.jpg);
+	background-repeat:repeat-x;
+	border:1px solid #d1c7ac;
+	width: 170px;
+	color:#333333;
+	padding:3px;
+	margin-right:4px;
+	margin-bottom:8px;
+}
+
+.tbn{
+    border-radius:3px;
+    border:1px solid #d1c7ac;
+    width: 182px;
+    padding:4px;
+    
+}
+
+.tbnPrint {
+    border-radius:3px;
+    border:1px solid #d1c7ac;
+    width: 182px;
+    padding:4px;
+    font-size:8px;
+}
+

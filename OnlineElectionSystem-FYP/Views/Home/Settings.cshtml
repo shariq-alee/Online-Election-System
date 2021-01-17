@@ -1,0 +1,322 @@
+﻿@using System.Collections.Generic
+@using System.Web.Optimization
+
+@model OnlineElectionSystem_FYP.Models.Citizen
+
+
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SB Admin - Start Bootstrap Template</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Poiret+One" rel="stylesheet">
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/vendor/bootstrap/css/bootstrap.min.css")
+    <!-- Custom fonts for this template-->
+    <link href="~/Content/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">*
+    @Styles.Render("~/Content/vendor/font-awesome/css/font-awesome.min.css")
+    <!-- Page level plugin CSS-->
+    <link href="~/Content/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    @Styles.Render("~/Content/vendor/datatables/dataTables.bootstrap4.css")
+    <!-- Custom styles for this template-->
+    <link href="~/Content/css/sb-admin.css" rel="stylesheet">
+    @Styles.Render("~/Content/css/sb-admin.css")
+    @Styles.Render("~/Content/wid.css")
+    @Scripts.Render("~/Content/wid.js")
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" />
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/popper/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Page level plugin JavaScript-->
+    <script src="~/Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Content/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="~/Content/vendor/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <script src="~/Content/js/sb-admin-datatables.min.js"></script>
+    <script src="~/Content/js/sb-admin-charts.min.js"></script>
+    <script src="~/Scripts/Chart.js-master/src/charts.js"></script>
+
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        @*<img src="~/Content/logo.jpg" height="50px" width="28px" style="border-radius:3px" />*@&nbsp;&nbsp;&nbsp;<a class="navbar-brand" href="@Url.Action("Dashboard","Home")">Online Election System</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="@Url.Action("Dashboard","Home")">
+                        <i class="fa fa-fw fa-dashboard"></i>
+                        <span class="nav-link-text">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="CreateNewForm">
+                    <a class="nav-link" href="@Url.Action("CastVote","Home")">
+                        <i class="fa fa-fw fa-book"></i>
+                        <span class="nav-link-text">Cast Vote</span>
+                    </a>
+                </li>
+
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="CreateNewForm">
+                    <a class="nav-link" href="@Url.Action("ResultReports","Home")">
+                        <i class="fa fa-fw fa-book"></i>
+                        <span class="nav-link-text">Result and Reports</span>
+                    </a>
+                </li>
+                @if (ViewBag.UserRole == "Voter")
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+                        <a class="nav-link" href="@Url.Action("BecomeACandidate","Home")">
+                            <i class="fa fa-fw fa-gear"></i>
+                            <span class="nav-link-text">Become a Candidate</span>
+                        </a>
+                    </li>
+                }
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Settings">
+                    <a class="nav-link" href="@Url.Action("Settings","Home")">
+                        <i class="fa fa-fw fa-gear"></i>
+                        <span class="nav-link-text">Settings</span>
+                    </a>
+                </li>
+                @if (ViewBag.UserRole == "Admin")
+                {
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-table"></i>
+                            <span class="nav-link-text">Administration Panel</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="@Url.Action("ManageUserProfiles","Admin")">Manage User Profiles</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ManagePoliticalParties","Admin")">Manage Political Parties</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ManageCandidates","Admin")">Manage Candidates</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("VerifyCandidate","Admin")">Verfiy Candidate</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("AnalyseSentiments","Admin")">Sentiments Analysis</a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav sidenav-toggler"></ul>
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+                <li>
+
+                    <p style="color:white;padding-top:7px">@ViewBag.Username, @ViewBag.UserRole </p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="Content-wrapper">
+        <div class="container-fluid">
+            <!-- Breadcrumbs-->
+                <h3>Settings</h3>
+            <div class="row">
+                <div class="col-lg-8">
+
+                    <hr class="mt-2">
+
+                </div>
+                <div class="col-lg-4">
+
+                </div>
+            </div>
+            <!-- Example DataTables Card-->
+            <div class="row">
+                <div class="col-4">
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Edit Profile</a>
+                        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Message from Admin <span class="badge badge-primary badge-pill">0</span></a>
+                        @*<a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>*@
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                            <form action="EditProfileSettings" method="post">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <b>Name</b><br />
+                                        <input class="form-control" name="Name" style="width:250px" type="text" value="@ViewBag.User.Name" /><br />
+                                        @Html.ValidationMessageFor(f => f.Name)
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>CNIC</b><br />
+                                        <input class="form-control" name="CNIC" style="width:250px" type="text" value="@ViewBag.User.CNIC" /><br />
+                                        @Html.ValidationMessageFor(f => f.CNIC)
+                                    </div>
+                                </div>
+                                
+                                <b>Password</b><br />
+                                <input class="form-control" name="Password" style="width:250px" type="password" value="@ViewBag.User.Password" /><br />
+                                @Html.ValidationMessageFor(f => f.Password)
+                                <b>Date Of Birth</b><br />
+                                <input class="form-control" name="DateOfBirth" style="width:250px" type="date" value="@ViewBag.User.DateOfBirth" /><br />
+                                @Html.ValidationMessageFor(f => f.DateOfBirth)
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <b>Current Address</b><br />
+                                        <textarea class="form-control" name="CurrentAddress" style="width:250px">@ViewBag.User.CurrentAddress</textarea><br />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>@Html.Label("Current Address Area")</b><br />
+                                        <select name="CurrentAreaAddress" class="form-control">
+                                            <option selected>--Select--</option>
+                                            @foreach (var item1 in (IEnumerable<OnlineElectionSystem_FYP.Models.Constituency_Locations>)ViewBag.ConstituencyLocs)
+                                            {
+                                                if (ViewBag.User.CurrentAreaAddress.Equals(item1.Id.ToString()))
+                                                {
+                                                    <option value="@item1.Id" selected>@item1.Address</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item1.Id">@item1.Address</option>    
+                                                }
+                                                
+                                            }
+                                        </select>
+                                        @Html.ValidationMessageFor(f => f.CurrentAreaAddress)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <b>@Html.Label("Permanent Street Address")</b><br />
+                                       <textarea class="form-control" name="PermanentAddress" style="width:250px">@ViewBag.User.PermanentAddress</textarea>
+                                        @Html.ValidationMessageFor(f => f.PermanentAddress)
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <b>@Html.Label("Permanent Address Area")</b><br />
+                                        <select name="PermanentAreaAddress" class="form-control">
+                                            <option selected>--Select--</option>
+                                            @foreach (var item1 in (IEnumerable<OnlineElectionSystem_FYP.Models.Constituency_Locations>)ViewBag.ConstituencyLocs)
+                                            {
+                                                if (ViewBag.User.PermanentAreaAddress.Equals(item1.Id.ToString()))
+                                                {
+                                                    <option value="@item1.Id" selected>@item1.Address</option>
+                                                }
+                                                <option value="@item1.Id">@item1.Address</option>
+                                            }
+                                        </select>
+                                        @* @Html.TextAreaFor(f => f.PermanentAreaAddress, new { required = "required", @class = "form-control", @minlength = "2", @maxlength = "50" })<br />*@
+                                        @Html.ValidationMessageFor(f => f.PermanentAreaAddress)
+                                    </div>
+                                </div>
+                            
+                            <input type="submit" value="Save" class="btn btn-success" />
+                        </form>
+                        </div>
+                        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Dummy Message</h5>
+                                        <small>3 days ago</small>
+                                    </div>
+                                    <p class="mb-1">Hi Welcome to Election Management System.</p>
+                                    <small>By Admin.</small>
+                                </a>
+
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Message 2</h5>
+                                        <small class="text-muted">3 days ago</small>
+                                    </div>
+                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small class="text-muted">Donec id elit non mi porta.</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Message 3</h5>
+                                        <small class="text-muted">3 days ago</small>
+                                    </div>
+                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small class="text-muted">Donec id elit non mi porta.</small>
+                                </a>
+                            </div>
+                        </div>
+                        @*<div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid-->
+        <!-- /.~/Content-wrapper-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright © Election Commission of Pakistan 2017</small>
+                </div>
+            </div>
+        </footer>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-Content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="@Url.Action("Logout","Authorization")">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Bootstrap core JavaScript-->
+
+    </div>
+
+
+</body>
+
+</html>

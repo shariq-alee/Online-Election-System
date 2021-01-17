@@ -1,0 +1,740 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E0FA378-0E17-49EF-970F-2B7B139F158C}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineElectionSystem_FYP</RootNamespace>
+    <AssemblyName>OnlineElectionSystem-FYP</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="dotless.Core">
+      <HintPath>..\packages\dotless.1.4.4\lib\dotless.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization.Less">
+      <HintPath>..\packages\System.Web.Optimization.Less.1.3.4\lib\net40\System.Web.Optimization.Less.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Candidate.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Candidate_Requests.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Citizen.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Constituency_Locations.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Constitution.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Election_Votes_Candidate.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PoliticalParty.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Voter.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VoterSentiment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="App_Data\ElectionCommissionDatabase.mdf" />
+    <Content Include="App_Data\ElectionCommissionDatabase_log.ldf">
+      <DependentUpon>ElectionCommissionDatabase.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\NADRA DB.mdf" />
+    <Content Include="App_Data\NADRA DB_log.ldf">
+      <DependentUpon>NADRA DB.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\css\pageLayout.css" />
+    <Content Include="Content\css\sb-admin.css" />
+    <Content Include="Content\css\sb-admin.min.css" />
+    <Content Include="Content\gulpfile.js" />
+    <Content Include="Content\js\sb-admin-charts.js" />
+    <Content Include="Content\js\sb-admin-charts.min.js" />
+    <Content Include="Content\js\sb-admin-datatables.js" />
+    <Content Include="Content\js\sb-admin-datatables.min.js" />
+    <Content Include="Content\js\sb-admin.js" />
+    <Content Include="Content\js\sb-admin.min.js" />
+    <Content Include="Content\pictures\election1.jpg" />
+    <Content Include="Content\pictures\election2.jpg" />
+    <Content Include="Content\pictures\election3.jpg" />
+    <Content Include="Content\pictures\PPP.png" />
+    <Content Include="Content\pictures\PTI.png" />
+    <Content Include="Content\pictures\PMLN.png" />
+    <Content Include="Content\vendor\bootstrap\css\animate.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap\css\custom.css" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Content\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Content\vendor\chart.js\Chart.js" />
+    <Content Include="Content\vendor\chart.js\Chart.min.js" />
+    <Content Include="Content\vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Content\vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Content\vendor\datatables\jquery.dataTables.js" />
+    <Content Include="Content\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Content\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="Content\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Content\vendor\jquery\jquery.js" />
+    <Content Include="Content\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\vendor\popper\popper.js" />
+    <Content Include="Content\vendor\popper\popper.min.js" />
+    <Content Include="Content\wid.css" />
+    <Content Include="Content\wid.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\Chart.js-master\.codeclimate.yml" />
+    <Content Include="Scripts\Chart.js-master\.editorconfig" />
+    <Content Include="Scripts\Chart.js-master\.eslintignore" />
+    <Content Include="Scripts\Chart.js-master\.eslintrc.yml" />
+    <Content Include="Scripts\Chart.js-master\.github\ISSUE_TEMPLATE.md" />
+    <Content Include="Scripts\Chart.js-master\.github\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="Scripts\Chart.js-master\.gitignore" />
+    <Content Include="Scripts\Chart.js-master\.htmllintrc" />
+    <Content Include="Scripts\Chart.js-master\.npmignore" />
+    <Content Include="Scripts\Chart.js-master\.travis.yml" />
+    <Content Include="Scripts\Chart.js-master\book.json" />
+    <Content Include="Scripts\Chart.js-master\composer.json" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\cartesian\category.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\cartesian\linear.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\cartesian\logarithmic.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\cartesian\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\cartesian\time.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\labelling.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\radial\linear.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\radial\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\axes\styling.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\area.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\bar.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\bubble.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\doughnut.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\line.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\mixed.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\polar.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\radar.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\charts\scatter.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\animations.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\elements.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\layout.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\legend.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\title.md" />
+    <Content Include="Scripts\Chart.js-master\docs\configuration\tooltip.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\api.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\axes.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\charts.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\contributing.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\plugins.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\developers\updates.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\accessibility.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\colors.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\device-pixel-ratio.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\fonts.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\interactions\events.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\interactions\modes.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\interactions\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\options.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\general\responsive.md" />
+    <Content Include="Scripts\Chart.js-master\docs\getting-started\installation.md" />
+    <Content Include="Scripts\Chart.js-master\docs\getting-started\integration.md" />
+    <Content Include="Scripts\Chart.js-master\docs\getting-started\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\getting-started\usage.md" />
+    <Content Include="Scripts\Chart.js-master\docs\notes\comparison.md" />
+    <Content Include="Scripts\Chart.js-master\docs\notes\extensions.md" />
+    <Content Include="Scripts\Chart.js-master\docs\notes\license.md" />
+    <Content Include="Scripts\Chart.js-master\docs\notes\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\README.md" />
+    <Content Include="Scripts\Chart.js-master\docs\SUMMARY.md" />
+    <Content Include="Scripts\Chart.js-master\LICENSE.md" />
+    <Content Include="Scripts\Chart.js-master\MAINTAINING.md" />
+    <Content Include="Scripts\Chart.js-master\package.json" />
+    <Content Include="Scripts\Chart.js-master\README.md" />
+    <Content Include="Scripts\Chart.js-master\samples\.eslintrc.yml" />
+    <Content Include="Scripts\Chart.js-master\scripts\deploy.sh" />
+    <Content Include="Scripts\Chart.js-master\scripts\release.sh" />
+    <Content Include="Scripts\Chart.js-master\test\.eslintrc.yml" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-absolute.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-flex-offset.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-flex.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-max.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-min-interval.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-multiple.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-no-overlap.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-offset.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-single-xy.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-single.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-stacked.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bubble\point-style.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.line\point-style.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.polarArea\angle-array.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.polarArea\angle-undefined.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.radar\point-style.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\core.scale\label-offset-vertical-axes.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\core.scale\tick-drawing.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-circle.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-cross-rot.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-cross.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-dash.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-line.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect-rot.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect-rounded.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-star.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-triangle.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-end-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-end.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-spline-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-spline.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-start-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-start.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-spline-span.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-spline.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-radar-boundary-origin-spline.json" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-radar-boundary-origin.json" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Chart.js-master\docs\style.css" />
+    <Content Include="Scripts\Chart.js-master\gulpfile.js" />
+    <Content Include="Scripts\Chart.js-master\karma.conf.js" />
+    <Content Include="Scripts\Chart.js-master\samples\advanced\data-labelling.html" />
+    <Content Include="Scripts\Chart.js-master\samples\advanced\progress-bar.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\area\analyser.js" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\area\line-boundaries.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\area\line-datasets.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\area\line-stacked.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\area\radar.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bar\horizontal.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bar\multi-axis.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bar\stacked-group.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bar\stacked.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bar\vertical.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\bubble.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\combo-bar-line.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\doughnut.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\basic.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\interpolation-modes.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\line-styles.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\multi-axis.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\point-sizes.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\point-styles.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\skip-points.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\line\stepped.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\pie.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\polar-area.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\radar-skip-points.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\radar.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\scatter\basic.html" />
+    <Content Include="Scripts\Chart.js-master\samples\charts\scatter\multi-axis.html" />
+    <Content Include="Scripts\Chart.js-master\samples\favicon.ico" />
+    <Content Include="Scripts\Chart.js-master\samples\index.html" />
+    <Content Include="Scripts\Chart.js-master\samples\legend\point-style.html" />
+    <Content Include="Scripts\Chart.js-master\samples\legend\positioning.html" />
+    <Content Include="Scripts\Chart.js-master\samples\logo.svg" />
+    <Content Include="Scripts\Chart.js-master\samples\samples.js" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\filtering-labels.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\gridlines-display.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\gridlines-style.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\linear\min-max-suggested.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\linear\min-max.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\linear\step-size.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\logarithmic\line.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\logarithmic\scatter.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\multiline-labels.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\non-numeric-y.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\time\combo.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\time\financial.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\time\line-point-data.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\time\line.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scales\toggle-scale-type.html" />
+    <Content Include="Scripts\Chart.js-master\samples\scriptable\bubble.html" />
+    <Content Include="Scripts\Chart.js-master\samples\style.css" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\border.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\callbacks.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\custom-line.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\custom-pie.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\custom-points.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\interactions.html" />
+    <Content Include="Scripts\Chart.js-master\samples\tooltips\positioning.html" />
+    <Content Include="Scripts\Chart.js-master\samples\utils.js" />
+    <Content Include="Scripts\Chart.js-master\src\chart.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Bar.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Bubble.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Doughnut.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Line.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.PolarArea.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Radar.js" />
+    <Content Include="Scripts\Chart.js-master\src\charts\Chart.Scatter.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.bar.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.bubble.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.doughnut.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.line.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.polarArea.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.radar.js" />
+    <Content Include="Scripts\Chart.js-master\src\controllers\controller.scatter.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.animation.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.animations.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.controller.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.datasetController.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.defaults.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.element.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.helpers.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.interaction.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.layouts.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.plugins.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.scale.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.scaleService.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.ticks.js" />
+    <Content Include="Scripts\Chart.js-master\src\core\core.tooltip.js" />
+    <Content Include="Scripts\Chart.js-master\src\elements\element.arc.js" />
+    <Content Include="Scripts\Chart.js-master\src\elements\element.line.js" />
+    <Content Include="Scripts\Chart.js-master\src\elements\element.point.js" />
+    <Content Include="Scripts\Chart.js-master\src\elements\element.rectangle.js" />
+    <Content Include="Scripts\Chart.js-master\src\elements\index.js" />
+    <Content Include="Scripts\Chart.js-master\src\helpers\helpers.canvas.js" />
+    <Content Include="Scripts\Chart.js-master\src\helpers\helpers.core.js" />
+    <Content Include="Scripts\Chart.js-master\src\helpers\helpers.easing.js" />
+    <Content Include="Scripts\Chart.js-master\src\helpers\helpers.options.js" />
+    <Content Include="Scripts\Chart.js-master\src\helpers\index.js" />
+    <Content Include="Scripts\Chart.js-master\src\platforms\platform.basic.js" />
+    <Content Include="Scripts\Chart.js-master\src\platforms\platform.dom.js" />
+    <Content Include="Scripts\Chart.js-master\src\platforms\platform.js" />
+    <Content Include="Scripts\Chart.js-master\src\plugins\index.js" />
+    <Content Include="Scripts\Chart.js-master\src\plugins\plugin.filler.js" />
+    <Content Include="Scripts\Chart.js-master\src\plugins\plugin.legend.js" />
+    <Content Include="Scripts\Chart.js-master\src\plugins\plugin.title.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.category.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.linear.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.linearbase.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.logarithmic.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.radialLinear.js" />
+    <Content Include="Scripts\Chart.js-master\src\scales\scale.time.js" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-absolute.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-flex-offset.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-flex.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-max.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-min-interval.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-multiple.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-no-overlap.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-offset.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-single-xy.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-single.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bar\bar-thickness-stacked.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.bubble\point-style.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.line\point-style.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.polarArea\angle-array.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.polarArea\angle-undefined.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\controller.radar\point-style.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\core.scale\label-offset-vertical-axes.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\core.scale\tick-drawing.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-circle.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-cross-rot.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-cross.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-dash.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-line.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect-rot.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect-rounded.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-rect.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-star.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\element.point\point-style-triangle.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-end-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-end.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-spline-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-spline.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin-stepped.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-origin.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-start-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-boundary-start.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-spline-span.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset-spline.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-line-dataset.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-radar-boundary-origin-spline.png" />
+    <Content Include="Scripts\Chart.js-master\test\fixtures\plugin.filler\fill-radar-boundary-origin.png" />
+    <Content Include="Scripts\Chart.js-master\test\jasmine.context.js" />
+    <Content Include="Scripts\Chart.js-master\test\jasmine.index.js" />
+    <Content Include="Scripts\Chart.js-master\test\jasmine.matchers.js" />
+    <Content Include="Scripts\Chart.js-master\test\jasmine.utils.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.bar.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.bubble.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.doughnut.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.line.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.polarArea.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.radar.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\controller.scatter.test.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.controller.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.datasetController.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.element.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.helpers.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.interaction.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.layouts.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.plugin.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.scale.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.scaleService.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.ticks.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\core.tooltip.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\element.arc.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\element.line.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\element.point.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\element.rectangle.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\global.defaults.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\global.deprecations.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\global.namespace.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\helpers.canvas.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\helpers.core.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\helpers.easing.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\helpers.options.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\platform.dom.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\plugin.filler.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\plugin.legend.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\plugin.title.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\scale.category.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\scale.linear.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\scale.logarithmic.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\scale.radialLinear.tests.js" />
+    <Content Include="Scripts\Chart.js-master\test\specs\scale.time.tests.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Views\Home\ManageUserProfiles.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\ManageUserProfiles.cshtml" />
+    <Content Include="Views\Authorization\Login.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Admin\EditUser.cshtml" />
+    <Content Include="Views\Admin\VerifyVoter.cshtml" />
+    <Content Include="Views\Home\BecomeACandidate.cshtml" />
+    <Content Include="Views\Home\CastVote.cshtml" />
+    <Content Include="Views\Admin\CreateUser.cshtml" />
+    <Content Include="Views\Admin\VerifyCandidate.cshtml" />
+    <Content Include="Views\Home\Settings.cshtml" />
+    <Content Include="Views\Admin\ViewVotes.cshtml" />
+    <Content Include="Views\Authorization\AdminLogin.cshtml" />
+    <Content Include="Views\Authorization\CandidateLogin.cshtml" />
+    <Content Include="Views\Home\VoteFeedBack.cshtml" />
+    <Content Include="Views\Admin\AnalyseSentiments.cshtml" />
+    <Content Include="Views\Admin\ManagePoliticalParties.cshtml" />
+    <Content Include="Views\Admin\CreatePoliticalParty.cshtml" />
+    <Content Include="Views\Admin\ManageCandidates.cshtml" />
+    <Content Include="Views\Admin\EditCandidate.cshtml" />
+    <Content Include="Views\Home\ResultReports.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Dashboard.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\.travis.yml" />
+    <Content Include="Content\pug\blank.pug" />
+    <Content Include="Content\pug\cards.pug" />
+    <Content Include="Content\pug\charts.pug" />
+    <Content Include="Content\pug\forgot-password.pug" />
+    <Content Include="Content\pug\includes\css\core.pug" />
+    <Content Include="Content\pug\includes\css\custom.pug" />
+    <Content Include="Content\pug\includes\footer.pug" />
+    <Content Include="Content\pug\includes\js\core.pug" />
+    <Content Include="Content\pug\includes\js\custom.pug" />
+    <Content Include="Content\pug\includes\modals\logout.pug" />
+    <Content Include="Content\pug\includes\navbar.pug" />
+    <Content Include="Content\pug\includes\scroll-to-top.pug" />
+    <Content Include="Content\pug\index.pug" />
+    <Content Include="Content\pug\login.pug" />
+    <Content Include="Content\pug\navbar.pug" />
+    <Content Include="Content\pug\register.pug" />
+    <Content Include="Content\pug\tables.pug" />
+    <Content Include="Content\scss\navbar\_navbar_colors.scss" />
+    <Content Include="Content\scss\navbar\_navbar_fixed.scss" />
+    <Content Include="Content\scss\navbar\_navbar_global.scss" />
+    <Content Include="Content\scss\navbar\_navbar_static.scss" />
+    <Content Include="Content\scss\navbar\_navbar_toggle.scss" />
+    <Content Include="Content\scss\sb-admin.scss" />
+    <Content Include="Content\scss\_cards.scss" />
+    <Content Include="Content\scss\_footer.scss" />
+    <Content Include="Content\scss\_global.scss" />
+    <Content Include="Content\scss\_login.scss" />
+    <Content Include="Content\scss\_mixins.scss" />
+    <Content Include="Content\scss\_utilities.scss" />
+    <Content Include="Content\scss\_variables.scss" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendor\font-awesome\less\animated.less" />
+    <Content Include="Content\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\vendor\font-awesome\less\core.less" />
+    <Content Include="Content\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\vendor\font-awesome\less\icons.less" />
+    <Content Include="Content\vendor\font-awesome\less\larger.less" />
+    <Content Include="Content\vendor\font-awesome\less\list.less" />
+    <Content Include="Content\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Content\vendor\font-awesome\less\path.less" />
+    <Content Include="Content\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Content\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Content\vendor\font-awesome\less\variables.less" />
+    <Content Include="Content\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>37565</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:37565/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

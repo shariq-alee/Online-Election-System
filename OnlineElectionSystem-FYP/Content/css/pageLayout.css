@@ -1,0 +1,22 @@
+﻿body {
+}
+
+@page{
+
+    size:A3;
+}
+
+@media print {
+    html, body {
+    width: 297mm;
+    height: 420mm;
+  }
+
+}
+
+page[size="A3"] {
+  background: white;
+  width: 29.7cm;
+  height: 42.0cm;
+  display: block;
+}
